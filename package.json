@@ -2,8 +2,9 @@
   "name": "vue-mutable",
   "version": "0.0.0-development",
   "description": "Proxies your props into mutable local state.",
-  "main": "index.js",
+  "main": "dist/vue-mutable.js",
   "scripts": {
+    "build": "npx webpack --config webpack.config.js --mode production",
     "commit": "git-cz",
     "semantic-release": "semantic-release"
   },
@@ -28,9 +29,11 @@
     "babel-loader": "^8.0.6",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.1.0",
+    "prettier": "^1.19.1",
     "semantic-release": "^17.0.3",
     "vue": "^2.6.11",
-    "webpack": "^4.41.6"
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
     "vue": "2.x"
