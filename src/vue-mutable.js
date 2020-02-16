@@ -1,4 +1,4 @@
-import { proxyMutableProps } from "./proxyMutableProps";
+import { proxyMutableProps as mutableProps } from "./proxyMutableProps";
 
 /**
  * @type {PluginObject}
@@ -9,8 +9,8 @@ const VueMutable = {
    * @param options {{}}
    */
   install(Vue, options) {
-    Vue.mixin(proxyMutableProps);
+    Vue.mixin(mutableProps);
   }
 };
 
-export { VueMutable };
+export { VueMutable, mutableProps };
