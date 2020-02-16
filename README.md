@@ -11,15 +11,24 @@ yarn add vue-mutable
 ```
 
 ```js
+// Installs a global mixin
 import { VueMutable } from 'vue-mutable';
 Vue.use(VueMutable);
+
+// Or, use the mixin directly in your component
+import { mutableProps } from 'vue-mutable';
+
+export default {
+  mixins: [mutableProps]
+  ...
+}
 ```
 
-## Before
+# Why
 
 If you need to modify a prop in a components local state, you need to do a few things:
 
-1. Define the data property
+1. Define a data property
 2. Set the data property value to the prop value in a lifecycle hook
 3. Set a watcher for the prop so that if the parent updates the value, the internal value is synced
 
@@ -45,8 +54,6 @@ If you need to modify a prop in a components local state, you need to do a few t
   }
 }
 ```
-
-## After
 
 Vue Mutable simplifies the process for you. Flag any prop as `mutable` and it will be accessible internally as a data property.
 
