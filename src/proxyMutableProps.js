@@ -2,6 +2,9 @@
  * @type {VueConstructor | ComponentOptions<Vue>}
  */
 const proxyMutableProps = {
+  /**
+   * Add mutable props to the data object.
+   */
   data() {
     const data = {};
 
@@ -11,10 +14,13 @@ const proxyMutableProps = {
 
     return data;
   },
+  /**
+   * Set data properties, add watchers
+   */
   mounted() {
     getProxyable(this.__proto__.constructor.sealedOptions.props).forEach(
       prop => {
-        this.$data[`_${prop}`] = this[prop];
+        setDataProperty(prop, this);
       }
     );
   }
@@ -27,12 +33,11 @@ const getProxyable = props => {
 };
 
 /**
- *
  * @param propName {string}
  * @param vue {Component}
  */
 const setDataProperty = (propName, vue) => {
-  vue.$set(vue, `_${propName}`, vue[propName]);
+  return (vue.$data[`_${propName}`] = vue[propName]);
 };
 
 export { proxyMutableProps, getProxyable };
