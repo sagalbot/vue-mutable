@@ -2,6 +2,19 @@
 
 > Proxy your props into mutable local state.
 
+# Install
+
+```bash
+npm i --save vue-mutable
+# or
+yarn add vue-mutable
+```
+
+```js
+import { VueMutable } from 'vue-mutable';
+Vue.use(VueMutable);
+```
+
 ## Before
 
 If you need to modify a prop in a components local state, you need to do a few things:
