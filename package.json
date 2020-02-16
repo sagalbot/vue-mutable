@@ -4,7 +4,6 @@
   "description": "Proxies your props into mutable local state.",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "commit": "git-cz",
     "semantic-release": "semantic-release"
   },
