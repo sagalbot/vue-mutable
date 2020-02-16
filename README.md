@@ -14,12 +14,12 @@ If you need to modify a prop in a components local state, you need to do a few t
 {
   props: {
     options: {
-      default: [],
+      default: []
     }
   },
   data() {
     return {
-      _options: [],
+      _options: []
     }
   },
   created() {
@@ -37,12 +37,12 @@ If you need to modify a prop in a components local state, you need to do a few t
 
 Vue Mutable simplifies the process for you. Flag any prop as `mutable` and it will be accessible internally as a data property.
 
-```js
+```diff
 {
   props: {
     options: {
       default: [],
-      mutable: true
++     mutable: true
     }
   },
 }
