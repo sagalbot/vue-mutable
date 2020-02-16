@@ -1,14 +1,16 @@
 {
   "name": "vue-mutable",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "Proxies your props into mutable local state.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sagalbot/vue-mutable.git"
+    "url": "https://github.com/sagalbot/vue-mutable.git"
   },
   "keywords": [
     "Vue",
@@ -20,5 +22,15 @@
   "bugs": {
     "url": "https://github.com/sagalbot/vue-mutable/issues"
   },
-  "homepage": "https://github.com/sagalbot/vue-mutable#readme"
+  "homepage": "https://github.com/sagalbot/vue-mutable#readme",
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0",
+    "semantic-release": "^17.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
