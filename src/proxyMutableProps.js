@@ -21,23 +21,36 @@ const proxyMutableProps = {
     getProxyable(this.__proto__.constructor.sealedOptions.props).forEach(
       prop => {
         setDataProperty(prop, this);
+        setPropWatcher(prop, this);
       }
     );
   }
 };
 
-const getProxyable = props => {
-  return Object.keys(props).filter(
+/**
+ * Find the props that should be proxied.
+ * @param props {object}
+ * @return {string[]}
+ */
+const getProxyable = props =>
+  Object.keys(props).filter(
     prop => props[prop].hasOwnProperty("mutable") && props[prop].mutable
   );
-};
 
 /**
  * @param propName {string}
  * @param vue {Component}
  */
-const setDataProperty = (propName, vue) => {
-  return (vue.$data[`_${propName}`] = vue[propName]);
-};
+function setPropWatcher(propName, vue) {
+  vue.$watch(propName, updated => (vue.$data[`_${propName}`] = updated));
+}
+
+/**
+ * @param propName {string}
+ * @param vue {Component}
+ */
+function setDataProperty(propName, vue) {
+  vue.$data[`_${propName}`] = vue[propName];
+}
 
 export { proxyMutableProps, getProxyable };

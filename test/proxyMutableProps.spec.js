@@ -35,3 +35,14 @@ test("it sets internal data properties for proxyable props", () => {
   const Wrapper = shallowMount(Stub, { propsData: { myProp: "hello world" } });
   expect(Wrapper.vm.$data._myProp).toEqual("hello world");
 });
+
+test("it defines a watcher for the prop that updates the mutable proxy with an updated value", async () => {
+  const Wrapper = shallowMount(Stub, { propsData: { myProp: "hello world" } });
+  expect(Wrapper.vm.$data._myProp).toEqual("hello world");
+
+  Wrapper.setProps({ myProp: "goodbye world" });
+
+  await Wrapper.vm.$nextTick();
+
+  expect(Wrapper.vm.$data._myProp).toEqual("goodbye world");
+});
