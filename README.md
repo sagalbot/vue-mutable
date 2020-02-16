@@ -11,8 +11,17 @@ yarn add vue-mutable
 ```
 
 ```js
+# Installs a global mixin
 import { VueMutable } from 'vue-mutable';
 Vue.use(VueMutable);
+
+# Or, use the mixin directly in your component
+import { mutableProps } from 'vue-mutable';
+
+export default {
+  mixins: [mutableProps]
+  ...
+}
 ```
 
 ## Before
